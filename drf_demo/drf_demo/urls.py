@@ -25,8 +25,9 @@ router = DefaultRouter()
 router.register(r'music', MusicViewSet, basename='music')
 router.register(r'shares', ShareViewSet, basename='share')
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls), name='api'),
-    path('api-auth/', include('rest_framework.urls'), name='rest_framwork')
+    path('api/', include((router.urls, 'api'), namespace='api'), name='api'),
+    path('api-auth/', include('rest_framework.urls', 'rest_framwork'))
 ]
