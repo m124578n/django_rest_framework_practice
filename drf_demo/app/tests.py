@@ -59,11 +59,11 @@ class MusicViewTestCase(APITestCase):
 
     def test_api_music_update(self):
         print('test_api_music_update')
-        update_song = {'song': 'song_update', 'singer': 'SINGER_UPDATE'}
+        update_song = {'song': 'song_update', 'singer': 'singer_update'}
         response = self.client.put(self.url_detail.format(self.music.id), update_song, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data.get('song', None), update_song.get('song'))
-        self.assertEqual(response.data.get('singer', None), update_song.get('singer'))
+        self.assertEqual(response.data.get('singer', None), update_song.get('singer').upper())
 
     def test_api_music_delete(self):
         print('test_api_music_delete')
