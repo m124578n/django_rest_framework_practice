@@ -13,6 +13,7 @@ from rest_framework.decorators import api_view, action
 class MusicViewSet(viewsets.ModelViewSet):
     queryset = Music.objects.all()
     serializer_class = MusicSerializer
+    permission_classes = (IsAuthenticated,)
 
 
     # /api/music/raw_sql_query/
