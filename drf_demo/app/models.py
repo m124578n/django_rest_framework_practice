@@ -10,4 +10,12 @@ class Music(models.Model):
 
     class Meta:
         db_table = "music"
-        
+
+def fun_raw_sql_query(**kwargs):
+    song = kwargs.get('song')
+    if song:
+        result = Music.objects.raw('SELECT * FROM music WHERE song = %s', [song])
+    else:
+        result = Music.objects.raw('SELECT * FROM music')
+    return result
+
