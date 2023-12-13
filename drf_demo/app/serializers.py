@@ -20,3 +20,8 @@ class MusicSerializer(serializers.ModelSerializer):
     def get_days_since_created(self, obj):
         return (now() - obj.created).days
     
+class MusicSerializerV1(serializers.ModelSerializer):
+    class Meta:
+        model = Music
+        fields = ('id', 'song', 'singer')
+        
